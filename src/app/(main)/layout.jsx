@@ -1,3 +1,4 @@
+import BreckingNewes from '@/components/shared/BreckingNewes';
 import Header from '@/components/shared/Header';
 import Navber from '@/components/shared/Navber';
 import React from 'react';
@@ -6,6 +7,7 @@ const MainLayout = ({children}) => {
     return (
         <>
             <Header></Header>
+            <BreckingNewes></BreckingNewes>
             <Navber></Navber>
             {children}
         </>
