@@ -18,11 +18,15 @@ const RightSideBar = () => {
       </div>
       <div>
         <h2 className="text-xl font-medium text-left mb-3">Find us on</h2>
-        <ul className='flex flex-col gap-3'>
-          <li className='flex justify-center items-center gap-3 font-normal text-[16px] cursor-pointer'><FaFacebook className='text-blue-600' /> Facebook</li>
-          <li className='flex justify-center items-center gap-3 font-normal text-[16px] cursor-pointer'><FaTwitter className='text-black' /> Twitter</li>
-          <li className='flex justify-center items-center gap-3 font-normal text-[16px] cursor-pointer'><FaInstagram className='text-red-700' /> Instagram</li>
+        <ul className='flex flex-col gap-1'>
+          <li className='flex justify-center items-center gap-3 font-normal text-[16px] cursor-pointer hover:bg-gray-200 p-2 rounded-md border'><FaFacebook className='text-blue-600' /> Facebook</li>
+          <li className='flex justify-center items-center gap-3 font-normal text-[16px] cursor-pointer hover:bg-gray-200 p-2 rounded-md border'><FaTwitter className='text-black' /> Twitter</li>
+          <li className='flex justify-center items-center gap-3 font-normal text-[16px] cursor-pointer hover:bg-gray-200 p-2 rounded-md border'><FaInstagram className='text-red-700' /> Instagram</li>
         </ul>
+      </div>
+      <div className=' my-2 bg-gray-200 rounded-md p-4 pb-50'>
+        <h2 className='text-xl font-medium text-left'>Q-zone</h2>
+        <p className='text-[14px]'>I will add this section later.......</p>
       </div>
     </div>
   );
