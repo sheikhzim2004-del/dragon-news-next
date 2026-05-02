@@ -33,7 +33,7 @@ const NewsDetailsPage = async ({ params }) => {
             <div className="flex gap-1 items-center">
               <Image
                 src={news.author?.img}
-                alt={news.author?.name}
+                alt={news.author?.name ?? "Author avatar"}
                 height={40}
                 width={40}
                 className="rounded-full"
@@ -54,7 +54,7 @@ const NewsDetailsPage = async ({ params }) => {
           <figure>
             <Image
               src={news.image_url}
-              alt={news.title}
+              alt={news.title ?? "Author avatar"}
               width={300}
               height={300}
               className="w-full"
