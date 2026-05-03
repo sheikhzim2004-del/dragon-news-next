@@ -7,6 +7,7 @@ import { CiBookmark, CiShare2 } from "react-icons/ci";
 import { FaEye } from "react-icons/fa";
 import { IoIosStar } from "react-icons/io";
 
+
 export const generateMetadata = async ({ params }) => {
   const { id } = await params;
   console.log(id, "params");
