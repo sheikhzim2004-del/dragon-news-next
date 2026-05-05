@@ -15,7 +15,7 @@ const Navber = () => {
             </ul>
             <div className='flex justify-center items-center gap-4'>
                 <Image src={userImage} alt='User Image'></Image>
-                <button className='btn bg-pink-600 text-white'>Login</button>
+                <Link href="/login" className='btn bg-pink-600 text-white'>Login</Link>
             </div>
         </div>
     );
