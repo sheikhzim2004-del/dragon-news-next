@@ -1,15 +1,38 @@
+"use client"
+
+import { authClient } from '@/lib/auth-client';
 import React from 'react';
 import { FaFacebook, FaGithub, FaGoogle, FaInstagram, FaTwitter } from 'react-icons/fa';
 
 const RightSideBar = () => {
+  const handleGoorleSignin = async () => {
+    const data = await authClient.signIn.social({
+      provider: "google",
+    });
+    console.log(data, "data")
+  }
+  const handleGithubSignin = async () => {
+    const data = await authClient.signIn.social({
+      provider: "github",
+    });
+    console.log(data, "data")
+  }
+
+
   return (
     <div>
       <h2 className="text-xl font-medium text-left mb-3">Login With</h2>
       <div>
-        <button className="btn w-full mb-2 p-4 border border-blue-500 text-blue-500 rounded-md">
+        <button
+          className="btn w-full mb-2 p-4 border border-blue-500 text-blue-500 rounded-md"
+          onClick={handleGoorleSignin}
+        >
           <FaGoogle />
           Login With Google</button>
-        <button className="btn w-full mb-2 p-4 border border-gray-800 text-gray-800 rounded-md">
+        <button 
+        className="btn w-full mb-2 p-4 border border-gray-800 text-gray-800 rounded-md"
+        onClick={handleGithubSignin}
+        >
           <FaGithub />
           Login With GitHub</button>
         <button className="btn w-full mb-2 p-4 border border-blue-700 text-blue-700 rounded-md">
