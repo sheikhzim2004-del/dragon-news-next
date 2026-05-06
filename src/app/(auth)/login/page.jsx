@@ -1,16 +1,24 @@
 "use client"
+import { authClient } from '@/lib/auth-client';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const LoginPage = () => {
-    const [showPassword, setShowPassword] =useState(false);
+    const [showPassword, setShowPassword] = useState(false);
     const { register, handleSubmit, formState: { errors } } = useForm();
 
-    const handleLoginFunc = (data) => {
+    const handleLoginFunc = async (data) => {
         console.log(data, "data")
-        
+
+        const { data: res, error } = await authClient.signIn.email({
+            email: data.email, // required
+            password: data.password, // required
+            rememberMe: true,
+            callbackURL: "/",
+        });
+
     }
     // console.log(errors, "error");
 
@@ -33,23 +41,23 @@ const LoginPage = () => {
                         {errors.email && <p className='text-red-600'><small>{errors.email.message}</small></p>}
 
 
-                        <fieldset className="fieldset">
+                        <fieldset className="fieldset relative">
                             <legend className="fieldset-legend">Password</legend>
                             <input
                                 type={showPassword ? "text" : "password"}
                                 {...register("password", {
                                     required: 'Password is Requered!',
-                                    minLength: { value: 6, message: "Password must be at least 6 characters" },
-                                    maxLength: { value: 10, message: "Password must be less than 20 characters" },
+                                    minLength: { value: 6, message: "Password must be at least 8 characters" },
+                                    maxLength: { value: 15, message: "Password must be less than 15 characters" },
                                     pattern: { value: /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/, message: "Password must contain at least one uppercase letter, one number, and one special character" },
                                 })}
                                 className="input border-0 w-full bg-slate-100 rounded-xl"
                                 placeholder="Type here Yout Password" />
-                                <button
+                            <button
                                 type='button'
-                                className=''
+                                className='absolute top-4 right-4 text-xl text-amber-900 cursor-pointer'
                                 onClick={() => setShowPassword(!showPassword)}
-                                >{showPassword ? <FaEyeSlash /> : <FaEye />}</button>
+                            >{showPassword ? <FaEyeSlash /> : <FaEye />}</button>
                         </fieldset>
                         {errors.password && <p className='text-red-600'><small>{errors.password.message}</small></p>}
                         <button className='btn w-full bg-slate-800 text-white rounded-xl mb-4'>Login</button>
