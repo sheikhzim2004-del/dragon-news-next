@@ -1,11 +1,13 @@
 "use client"
 import { authClient } from '@/lib/auth-client';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const RegisterPage = () => {
+    const router = useRouter(); //redirect kore home page niye jawar jonno
     const [showPassword, setShowPassword] = useState(false);
     const { register, handleSubmit, formState: { errors }, watch } = useForm();
 
@@ -28,6 +30,7 @@ const RegisterPage = () => {
         }
         if (res) {
             alert("Signup Successfull");
+            router.push("/");
         }
     }
     // console.log(errors, "error");
