@@ -9,7 +9,8 @@ const RegisterPage = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const handleRegisterFunc = (data) => {
-        console.log(data, "data")
+        const {name, email} = data;
+        console.log(name, email)
     }
     // console.log(errors, "error");
 
@@ -71,7 +72,7 @@ const RegisterPage = () => {
                         {errors.password && <p className='text-red-600'><small>{errors.password.message}</small></p>}
                         <button className='btn w-full bg-slate-800 text-white rounded-xl mb-4'>Login</button>
                     </form>
-                    <p>Dont have an account? <Link className='text-blue-500 text-md font-medium' href={"/login"}>Login</Link></p>
+                    <p>Already have an account?<Link className='text-blue-500 text-md font-medium' href={"/login"}>Login</Link></p>
                 </div>
             </div>
         </div>
