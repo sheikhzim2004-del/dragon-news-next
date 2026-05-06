@@ -1,16 +1,27 @@
 "use client"
+import { authClient } from '@/lib/auth-client';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const RegisterPage = () => {
-    const [showPassword, setShowPassword] =useState(false);
+    const [showPassword, setShowPassword] = useState(false);
     const { register, handleSubmit, formState: { errors } } = useForm();
 
-    const handleRegisterFunc = (data) => {
-        const {name, email} = data;
+    const handleRegisterFunc =async (data) => {
+        const { name, email, password, photo } = data;
         console.log(name, email)
+
+        const { data: res, error } =await authClient.signUp.email({
+            name: name, // required
+            email: email, // required
+            password: password, // required
+            image: photo,
+            callbackURL: "/",
+        })
+        console.log(res, "res")
+        console.log(error, "error")
     }
     // console.log(errors, "error");
 
@@ -63,11 +74,11 @@ const RegisterPage = () => {
                                 })}
                                 className="input border-0 w-full bg-slate-100 rounded-xl"
                                 placeholder="Type here Yout Password" />
-                                <button
+                            <button
                                 type='button'
                                 className=''
                                 onClick={() => setShowPassword(!showPassword)}
-                                >{showPassword ? <FaEyeSlash /> : <FaEye />}</button>
+                            >{showPassword ? <FaEyeSlash /> : <FaEye />}</button>
                         </fieldset>
                         {errors.password && <p className='text-red-600'><small>{errors.password.message}</small></p>}
                         <button className='btn w-full bg-slate-800 text-white rounded-xl mb-4'>Login</button>

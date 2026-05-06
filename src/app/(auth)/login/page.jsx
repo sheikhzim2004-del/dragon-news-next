@@ -10,6 +10,7 @@ const LoginPage = () => {
 
     const handleLoginFunc = (data) => {
         console.log(data, "data")
+        
     }
     // console.log(errors, "error");
 
